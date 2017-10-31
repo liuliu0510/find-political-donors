@@ -70,10 +70,9 @@ So here I used 2 heaps to achieve that, largeHeap and smallHeap. largeHeap is us
 
 `find_political_donors.py` contains the main function of this solution.  
 It mainly consists functions as following: 
-
-*processData(), which reads the input file, extracts the data information we need, and calls functions for different situation.
-*medianByZip(), medianByDate(), processing data according to the specific requirements of zipcode and transaction date.
-*writeFile(), writing results to the relevant output file path.
+* processData(), which reads the input file, extracts the data information we need, and calls functions for different situation.
+* medianByZip(), medianByDate(), processing data according to the specific requirements of zipcode and transaction date.
+* writeFile(), writing results to the relevant output file path.
 
 
 # Packages required
