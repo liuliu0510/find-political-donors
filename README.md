@@ -57,17 +57,16 @@ Each line of this file contains these fields:
 This second output file does not depend on the order of the input file, and in fact should be sorted alphabetical by recipient and then chronologically by date.
 
 
-#Approaches
+# Approaches
 This program mainly consists 3 files: `find_political_donors.py`, `check_data_validity.py`, and `get_median.py`
 
 `check_data_validity.py` is used for checking input data's validity. Make sure they conform to those requirements, like: the `OTHER_ID` should be empty, the `CMTE_ID` and `Transaction_AMT` shouldn't be empty.
 
 `get_median.py` defines a class `getMedianByHeap` which is used to find medians of the data. Of course, We can use the numpy package of Python, `numpy.median()` to find the median of input list. However, here I choose another strategy(using 2 heaps) to realize that, which I think is better. 
-Since for the `medianvals_by_zip.txt` output file, we need to update medians with the input lines, which means we need to compute the median for every line. 
-Instead of sorting the whole list again every time, we can utilize the previous results to save the sorting time, which means every time when we process a new line, adding a new number, we can just insert this 
-number into a appropriate place of the previously sorted list. So here I used 2 heaps to achieve that, largeHeap and smallHeap. largeHeap is used for the larger half part of the input number, and the smallHeap contains the smaller half part.
-In this way, we can directly get the median number from roots of the two heaps. If largeHeap contains one more number than the smallHeap, its root value would be the median one. If the two heaps have the same amount of numbers, then we can get the median value 
-by computing the average of those two roots.
+
+Since for the `medianvals_by_zip.txt` output file, we need to update medians with the input lines, which means we need to compute the median for every line. Instead of sorting the whole list again every time, we can utilize the previous results to save the sorting time, which means every time when we process a new line, adding a new number, we can just insert this number into a appropriate place of the previously sorted list. 
+
+So here I used 2 heaps to achieve that, largeHeap and smallHeap. largeHeap is used for the larger half part of the input number, and the smallHeap contains the smaller half part. In this way, we can directly get the median number from roots of the two heaps. If largeHeap contains one more number than the smallHeap, its root value would be the median one. If the two heaps have the same amount of numbers, then we can get the median value by computing the average of those two roots.
 
 `find_political_donors.py` contains the main function of this solution.  
 It mainly consists functions as following: 
